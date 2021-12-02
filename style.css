@@ -1,0 +1,328 @@
+/* masukin monsterrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+}
+
+/* ini buat kapan2 nambahin fitur to do list bismilah */
+html { 
+  overflow-y: auto;
+ }
+
+body {
+  height: 100vh;
+  padding: 35px;
+  background: rgb(10, 10, 10);
+  /* background: whitesmoke; */
+  color: whitesmoke;
+  /* color: #e7e7e7; */
+  font-family: "Montserrat", sans-serif;
+}
+h1 {
+  margin: 15px 0;
+  font-weight: 900;
+  font-size: 28px;
+  text-align: center;
+}
+input {
+  transition: 0.5s ease-in-out;
+  margin: 10px 0;
+  font-size: 18px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.11);
+  border: none;
+}
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  margin: 35px 0;
+}
+button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+  transition: 0.5s ease-in-out;
+}
+label {
+  font-size: 12px;
+}
+form {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  max-width: 250px;
+  margin: 5px auto;
+}
+#focusTime{
+  color: whitesmoke;
+  background: rgb(40, 40, 40);
+  border-radius: 4px;
+}
+#breakTime{
+  color: whitesmoke;
+  background: rgb(40, 40, 40);
+  border-radius: 4px;
+}
+#longbreakTime{
+  color: whitesmoke;
+  background: rgb(40, 40, 40);
+  border-radius: 4px;
+}
+#cycle{
+  color: whitesmoke;
+  background: rgb(40, 40, 40);
+  border-radius: 4px;
+}
+form button {
+    /* background: rgb(220, 220, 220); */
+    /* color: black; */
+    background-color: rgb(40, 40, 40);
+    border: 2px solid rgb(60, 60, 60);
+    color: whitesmoke;
+    width: 100%;
+    margin: 5px auto;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+
+}
+.start {
+    /* background: rgb(220, 220, 220);
+    color: black; */
+    background-color: rgb(40, 40, 40);
+    border: 2px solid rgb(60, 60, 60);
+    color: whitesmoke;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+}
+.break {
+    /* background: rgb(220, 220, 220);
+    color: black; */
+    background-color: rgb(40, 40, 40);
+    border: 2px solid rgb(60, 60, 60);
+    color: whitesmoke;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+
+}
+.reset {
+    /* background: rgb(220, 220, 220);
+    color: black; */
+    background-color: rgb(40, 40, 40);
+    border: 2px solid rgb(60, 60, 60);
+    color: whitesmoke;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+
+}
+.pause {
+    /* background: rgb(220, 220, 220);
+    color: black; */
+    background-color: rgb(40, 40, 40);
+    border: 2px solid rgb(60, 60, 60);
+    color: whitesmoke;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+
+}
+.resume {
+    /* background: rgb(220, 220, 220);
+    color: black; */
+    background-color: rgb(40, 40, 40);
+    border: 2px solid rgb(60, 60, 60);
+    color: whitesmoke;
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+
+}
+.clock {
+  padding: 3px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  height: 30%;
+  font-size: 24px;
+}
+.progress-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.7, 1.7);
+}
+
+.progress-ring__circle {
+  transition: 0.5s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: rgb(28, 240, 56);
+  stroke-linecap: round;
+}
+
+.progress-ring__circle__background {
+    transition: 0.5s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke: rgb(96, 255, 117);
+  }
+
+footer {
+  position: fixed;
+  bottom: 4px;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#newtask{
+  position: relative;
+  padding: 30px 20px;
+  border-radius: 5px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+#newtask input{
+  width: 100%;
+  height: 45px;
+  font-family: 'Monsterrat',sans-serif;
+  font-size: 16px;
+  border: 2px solid rgb(60, 60, 60);
+  padding: 14px;
+  color: whitesmoke;
+  font-weight: 500;
+  position: relative;
+  border-radius: 5px;
+}
+
+#newtask button{
+  position: static;
+  float: right;
+  width: 100px;
+  height: 45px;
+  border-radius: 5px;
+  font-family: 'Monsterrat',sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: rgb(40, 40, 40);
+  border: 2px solid rgb(60, 60, 60);
+  color: whitesmoke;
+  cursor: pointer;
+}
+#tasks{
+  padding: 30px 20px;
+  margin-top: 60px;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  width: 100%;
+  position: relative;
+}
+.task{
+  height: 50px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #d1d3d4;
+  cursor: pointer;
+}
+.task span{
+  font-family: 'Monsterrat',sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+.task button{
+  /* background-color: #8052ec;
+  color: #ffffff; */
+  float: right;
+  background-color: rgb(40, 40, 40);
+  border: 2px solid rgb(60, 60, 60);
+  color: whitesmoke;
+  height: 100%;
+  width: 75px;
+  border-radius: 5px;
+  /* border: none; */
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+}
+.danger {
+  stroke: rgb(243, 17, 28);
+  /* animation: pulse 0.9s ease-in-out infinite; */
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: rotate(-90deg) scale(1);
+  }
+  50% {
+    transform: rotate(-90deg) scale(1.05);
+  }
+  75% {
+    transform: rotate(-90deg) scale(0.8);
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  body {
+    display: grid;
+    grid-template-areas:
+      "head head"
+      "clock form"
+      "btns plchldr"
+      "todo todo";
+  }
+  .btn-group {
+    grid-area: btns;
+    justify-content: center;
+  }
+  .clock {
+    grid-area: clock;
+    height: 100%;
+  }
+  h1 {
+    grid-area: head;
+    align-self: center;
+  }
+  form {
+    align-self: center;
+    justify-self: center;
+    grid-area: form;
+    width: 50%;
+    justify-content: space-around;
+  }
+  .container{
+    grid-area: todo;
+    justify-content: center;
+  }
+  footer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  form {
+    height: 40%;
+  }
+  footer {
+    position: static;
+  }
+}
