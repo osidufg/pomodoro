@@ -14,8 +14,11 @@
       <div class="mins">0</div>
       <div>:</div>
       <div class="secs">00</div>
-      <audio
+      <!-- <audio
         src="http://soundbible.com/mp3/service-bell_daniel_simion.mp3"
+      ></audio> -->
+      <audio
+        src="bell.wav"
       ></audio>
       <svg class="progress-ring" height="120" width="120">
         <circle
@@ -46,11 +49,11 @@
 
     <!-- settings -->
     <form action=".">
-      <label for="focusTime">focus time (minutes)</label>
+      <label for="focusTime">focus time (seconds)</label>
       <input type="number" value="1" id="focusTime" placeholder="20"/>
-      <label for="breakTime">break time (minutes)</label>
+      <label for="breakTime">break time (seconds)</label>
       <input type="number" value="1" id="breakTime" placeholder="5"/>
-      <label for="longbreakTime">long break time (minutes)</label>
+      <label for="longbreakTime">long break time (seconds)</label>
       <input type="number" value="1" id="longbreakTime" placeholder="15"/>
       <label for="cycle">cycles</label>
       <input type="number" value="1" id="cycle" placeholder="0"/>
@@ -60,16 +63,15 @@
     <!-- todo list -->
     <div class="container">
       <div id="newtask">
-          <input type="text" placeholder="to do task...">
-          <button id="push">add taks</button>
+          <input class = inputVal type="text" placeholder="to do task...">
+          <button id="push">add task</button>
       </div>
       <div id="tasks"></div>
-  </div>
+    </div>
 
     <script src="settings.js"></script>
     <script src="timer.js"></script>
     <script src="progress.js"></script>
-    <script src="color.js"></script>
     <script src="todo.js"></script>
   </body>
 </html>

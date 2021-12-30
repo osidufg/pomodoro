@@ -6,93 +6,95 @@ const mindiv = document.querySelector(".mins");
 const secdiv = document.querySelector(".secs");
 
 const startBtn = document.querySelector(".start");
+const progCircleBg = document.querySelector("progress-ring__circle__background");
+const progCircle = document.querySelector(".progress-ring__circle");
+
 localStorage.setItem("btn", "focus");
 
-let initial, totalsecs, perc, paused, mins, seconds, cycle=0;
+//secOrMin 60 buat jadiin menit, 1 buat jadiin detik
+//jadiin detik buat live demo aja ntar kelamaan
+let initial, totalsecs, perc, paused, mins, seconds, cycle = 0, secOrMin = 1;
 
 //start on click
 startBtn.addEventListener("click", () => {
   let btn = localStorage.getItem("btn");
 
-  //ambil waktu dari form (default 1 menit)
+  //ambil waktu dari form (default ada di placeholder di index.html)
   if (btn === "focus") {
-    mins = +localStorage.getItem("focusTime") || 1;
+    mins = +localStorage.getItem("focusTime") || 20;
   } else if (btn === "break") {
-    mins = +localStorage.getItem("breakTime") || 1;
+    mins = +localStorage.getItem("breakTime") || 5;
   } else if (btn === "longbreak"){
-    mins = +localStorage.getItem("longbreakTime") || 1;
+    mins = +localStorage.getItem("longbreakTime") || 15;
   }
 
-  seconds = mins * 1;
-  totalsecs = mins * 1;
+  //timer jalan
+  seconds = mins * secOrMin;
+  totalsecs = mins * secOrMin;
   setTimeout(decremenT(), 60);
   startBtn.style.transform = "scale(0)";
   paused = false;
+  progCircle.style.stroke = "rgb(255, 59, 69)";
 });
 
-//timer
+//timernya
 function decremenT() {
   mindiv.textContent = Math.floor(seconds / 60);
   secdiv.textContent = seconds % 60 > 9 ? seconds % 60 : `0${seconds % 60}`;
-  // if (circle.classList.contains("danger")) {
-  //   circle.classList.remove("danger");
-  // }
 
   if (seconds > 0) {
-    perc = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
+    // perc = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
+    perc = ((totalsecs - seconds) / totalsecs) * 100;
     setProgress(perc);
     seconds--;
     initial = window.setTimeout("decremenT()", 1000);
-    // if (seconds < 10) {
-    //   circle.classList.add("danger");
-    // }
+
   } else {
     mins = 0;
     seconds = 0;
     bell.play();
     
     let btn = localStorage.getItem("btn");
-
+    let totalCycle = localStorage.getItem("cycle");
+    
+    
     if (btn === "focus") {
-      //ke mode break
-      // startBtn.textContent = "start break";
-      startBtn.classList.add("break");
-      localStorage.setItem("btn", "break");
       cycle++;
-      autoStart();
-    } else if (btn === "break") {
-      if (cycle == localStorage.getItem("cycle")){
-        //ke mode long break abis ini selese
+      // startBtn.textContent = "start break";
+      
+      // alert debug
+      // alert(cycle);
+      if (cycle == totalCycle){ // ke mode long break
         localStorage.setItem("btn", "longbreak");
+        progCircle.style.stroke ="rgb(66, 155, 245)"
         autoStart();
-      } else {
-        //ke mode focus
-        startBtn.classList.remove("break");
-        //startBtn.textContent = "start focus";
-        localStorage.setItem("btn", "focus");
+      } else{ // ke mode break
+        // startBtn.classList.add("break");
+        localStorage.setItem("btn", "break");
+        progCircle.style.stroke ="rgb(0, 255, 34)"
         autoStart();
       }
-    } else if (btn === "longbreak"){
+    } else if (btn === "break") {
+      
+      if (cycle == totalCycle){ // ke mode long break abis ini selese
+        localStorage.setItem("btn", "longbreak");
+        progCircle.style.stroke ="rgb(66, 155, 245)"
+        autoStart();
+      } else { // ke mode focus
+        // startBtn.classList.remove("break");
+        // startBtn.textContent = "start focus";
+        localStorage.setItem("btn", "focus");
+        progCircle.style.stroke ="rgb(255, 59, 69)";
+        autoStart();
+      }
+    } else if (btn === "longbreak"){ // udah selese
       cycle = 0;
       startBtn.style.transform = "scale(1)";
       setProgress(100);
       localStorage.setItem("btn", "focus");
     }
     
-    // else{
-    // if (btn === "focus") {
-    //   // startBtn.textContent = "start break";
-    //   startBtn.classList.add("break");
-    //   localStorage.setItem("btn", "break");
-    //   autoStart();
-    // } else {
-    //   startBtn.classList.remove("break");
-    //   startBtn.textContent = "start focus";
-    //   localStorage.setItem("btn", "focus");
-    //   autoStart();
-    // }
-    // // startBtn.style.transform = "scale(1)";
-    // }
+      // startBtn.style.transform = "scale(1)";
   }
 }
 
@@ -106,18 +108,23 @@ function autoStart(){
   } else if (btn === "longbreak"){
     mins = +localStorage.getItem("longbreakTime") || 1;
   }
-  seconds = mins * 1;
-  totalsecs = mins * 1;
+  seconds = mins * secOrMin;
+  totalsecs = mins * secOrMin;
   setTimeout(decremenT(), 60);
   startBtn.style.transform = "scale(0)";
   paused = false;
 }
 
-// //ini abis long break
-// function resetCycle(cycle){
-//   mins = 0;
-//   seconds = 0;
-//   bell.play();
-//   cycle = 0;
-//   startBtn.style.transform = "scale(1)";
+//ini rencananya buat skip button tapi nanti aja lah males
+// function startToSkip(){
+//   startBtn.textContent = "skip";
+//   startBtn.classList.add("skip");
+//   startBtn.addEventListener("click", () =>{
+//     setProgress(100);
+//     seconds = 0;
+//   })
+// }
+
+// function skipToStart(){
+
 // }

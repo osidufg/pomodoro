@@ -11,8 +11,9 @@
 }
 
 /* ini buat kapan2 nambahin fitur to do list bismilah */
+/* alhamdulilah jadi */
 html { 
-  overflow-y: auto;
+  overflow-y: scroll;
  }
 
 body {
@@ -67,21 +68,25 @@ form {
   color: whitesmoke;
   background: rgb(40, 40, 40);
   border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
 }
 #breakTime{
   color: whitesmoke;
   background: rgb(40, 40, 40);
   border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
 }
 #longbreakTime{
   color: whitesmoke;
   background: rgb(40, 40, 40);
   border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
 }
 #cycle{
   color: whitesmoke;
   background: rgb(40, 40, 40);
   border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
 }
 form button {
     /* background: rgb(220, 220, 220); */
@@ -171,7 +176,7 @@ form button {
   transition: 0.5s;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
-  stroke: rgb(28, 240, 56);
+  stroke: rgb(255, 59, 69);
   stroke-linecap: round;
 }
 
@@ -179,28 +184,45 @@ form button {
     transition: 0.5s;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
-    stroke: rgb(96, 255, 117);
+    stroke: rgb(70, 70, 70);
   }
 
-footer {
-  position: fixed;
-  bottom: 4px;
-  text-align: center;
-  width: 80%;
-  margin: 0 auto;
+/* merah focus, hijau break, biru long break gua comment aja buat kapan2*/
+/* setelah liat2 ternyata bisa pake var ges lupa gua bjir :voss */
+/* .red{
+  stroke: rgb(243, 17, 28);
 }
+.redLight{
+  stroke: rgb(255, 138, 144);
+}
+
+.green{
+  stroke: rgb(0, 255, 34);
+}
+.greenLight{
+  stroke: rgb(130, 255, 146);
+}
+
+.blue{
+  stroke: rgb(66, 155, 245);
+}
+.blueLight{
+  stroke: rgb(149, 192, 255);
+} */
+
 
 #newtask{
   position: relative;
   padding: 30px 20px;
   border-radius: 5px;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  font-family: "Montserrat", sans-serif;
 }
 
 #newtask input{
   width: 100%;
   height: 45px;
-  font-family: 'Monsterrat',sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   border: 2px solid rgb(60, 60, 60);
   padding: 14px;
@@ -216,8 +238,8 @@ footer {
   width: 100px;
   height: 45px;
   border-radius: 5px;
-  font-family: 'Monsterrat',sans-serif;
-  font-weight: 500;
+  /* font-weight: 100; */
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   background-color: rgb(40, 40, 40);
   border: 2px solid rgb(60, 60, 60);
@@ -226,14 +248,16 @@ footer {
 }
 #tasks{
   padding: 30px 20px;
-  margin-top: 60px;
+  margin-top: 20px;
   border-radius: 10px;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3);
   width: 100%;
   position: relative;
+  font-family: "Montserrat", sans-serif;
+  
 }
 .task{
-  height: 50px;
+  /* height: 50px; */
   padding: 5px 10px;
   margin-top: 10px;
   display: flex;
@@ -241,11 +265,13 @@ footer {
   justify-content: space-between;
   border-bottom: 2px solid #d1d3d4;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 .task span{
-  font-family: 'Monsterrat',sans-serif;
-  font-size: 15px;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  width: 90%;
+  overflow-wrap: break-word;
 }
 .task button{
   /* background-color: #8052ec;
@@ -255,40 +281,26 @@ footer {
   border: 2px solid rgb(60, 60, 60);
   color: whitesmoke;
   height: 100%;
-  width: 75px;
+  width: 80px;
   border-radius: 5px;
   /* border: none; */
   cursor: pointer;
-  outline: none;
-  font-size: 16px;
+  font-size: 85%;
+  font-family: "Montserrat", sans-serif;
 }
-.danger {
-  stroke: rgb(243, 17, 28);
-  /* animation: pulse 0.9s ease-in-out infinite; */
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: rotate(-90deg) scale(1);
-  }
-  50% {
-    transform: rotate(-90deg) scale(1.05);
-  }
-  75% {
-    transform: rotate(-90deg) scale(0.8);
-  }
+.done{
+  text-decoration: line-through;
 }
 
-@media screen and (min-width: 768px) {
-
+/* desktop layout */
+@media screen and (min-width: 767px) {
   body {
     display: grid;
     grid-template-areas:
-      "head head"
-      "clock form"
-      "btns plchldr"
-      "todo todo";
+      "head head head"
+      "clock clock form"
+      "btns btns plchdr"
+      "todo todo todo";
   }
   .btn-group {
     grid-area: btns;
@@ -311,18 +323,47 @@ footer {
   }
   .container{
     grid-area: todo;
-    justify-content: center;
-  }
-  footer {
-    width: 100%;
+    justify-content: space-around;
+    position: static;
   }
 }
 
-@media screen and (max-width: 375px) {
+/* setting dikit buat mobile layout */
+@media screen and (max-width: 767px) {
+  body {
+    display: grid;
+    grid-template-areas:
+      "head"
+      "clock"
+      "btns"
+      "form"
+      "todo";
+  }
+  h1 {
+    grid-area: head;
+    align-self: center;
+    padding-bottom: 100px;
+  }
+  .clock {
+    grid-area: clock;
+    /* height: 100%; */
+    /* padding-bottom: 20%; */
+  }
+  .btn-group {
+    padding-top: 12%;
+    grid-area: btns;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+  }
   form {
+    grid-area: form;
     height: 40%;
   }
-  footer {
+  .container{
+    grid-area: todo;
+    /* padding-top: 20%; */
     position: static;
+    justify-content: space-around
   }
 }
